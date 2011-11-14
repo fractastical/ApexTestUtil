@@ -11,7 +11,7 @@ public with sharing class TestUtil {
 		of follow status.
 	*/  
 	public static User createTestUser() {
-		Profile p = [Select Id, Name from Profile where Name = 'System Administrator'];
+		Profile p = [Select Id, Name from Profile where Name = 'System Administrator' || Name = 'Systemadministrator' ];
 		return TestUtil.createTestUser(p);
 	}
 
