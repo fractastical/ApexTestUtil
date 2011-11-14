@@ -2,7 +2,7 @@
 Props to: reid.carlberg@salesforce.com
 */
 
-public with sharing class TestUtility {
+public with sharing class TestUtil {
 
 	/*
 		A random user is useful for testing in order to be 
@@ -11,7 +11,7 @@ public with sharing class TestUtility {
 	*/  
 	public static User createTestUser() {
 		Profile p = [Select Id, Name from Profile where Name = 'System Administrator'];
-		return TestUtility.createTestUser(p);
+		return TestUtil.createTestUser(p);
 	}
 
 	public static User createTestUser(Profile p) {
@@ -37,18 +37,6 @@ public with sharing class TestUtility {
 		return testUser;
 	}
 
-	public static FeedPost createFeedPost(Id parentId, String title, String body) {
-		FeedPost fp = new FeedPost();
-		fp.ParentId = parentId;
-		fp.Title = title;
-		fp.Body = body;
-		insert fp;
-
-		return fp;
-
-    }
-    
-    
     /*
     	Random words are required for testing 
     	as you will likely run into any word I can insert
@@ -67,35 +55,17 @@ public with sharing class TestUtility {
     
     static TestMethod void testRandomWord() {
     	
-    	System.assert(TestUtility.createRandomWord() != TestUtility.createRandomWord());
+    	System.assert(TestUtil.createRandomWord() != TestUtil.createRandomWord());
     }
     
 	static TestMethod void testCreateUser() {
 
-		User u = TestUtility.createTestUser();
+		User u = TestUtil.createTestUser();
 
 		System.assert(u.id != null);
 
 	}
 
-	static TestMethod void testCreateFeedPost() {
 
-		User u = TestUtility.createTestUser();
-
-		FeedPost p = TestUtility.createFeedPost(u.id, 'title', 'body');
-
-		System.assert(p.id != null);
-	}
-
-	/* 
-    Test methods and utilities
-    */
-    
-    
-  /*  public static void addSingleKeyword(String kw) {
-        Chatter_Keywords__c kw1 = new Chatter_Keywords__c();
-        kw1.Name = kw;
-        insert kw1;
-    }*/
 
 }
