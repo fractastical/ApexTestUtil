@@ -1,5 +1,6 @@
 /*
-Props to: reid.carlberg@salesforce.com
+Maintained by @fracastical
+Made possible by @ReidCarlberg
 */
 
 public with sharing class TestUtil {
